@@ -1,0 +1,18 @@
+<h1>New Game</h1>
+
+<div class="selection">
+  <ul>
+    <% @selection.each do |select|   %>
+    <li class="case"><%= select %></li>
+    <% end%>
+  </ul>
+</div>
+
+<form action="/score" method="POST">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :selection, @selection.join(',') %>
+  <label for="word">What is the longest wor you can find</label>
+  <input id="word" type="text" value="" name="word" placeholder="">
+  <button type="submit">Play</button>
+</form>
+
